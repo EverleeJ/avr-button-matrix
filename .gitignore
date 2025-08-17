@@ -1,3 +1,5 @@
 Makefile
 compile_commands.json
-.cache/*
+main.c
+.cache/
+
