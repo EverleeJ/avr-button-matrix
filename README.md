@@ -61,7 +61,7 @@ Below is an example using values of the previously shown `matrix_config()`, that
 int main(void) {
   matrix_init();
 
-  DDRB |= (DDB5 << 1);  // LED pin set to output
+  DDRB |= (DDB5 << 1);  // LED DDR set to output
 
   for (;;) {
     uint8_t out = matrix_out();
