@@ -14,6 +14,10 @@ git clone git@github.com:EverleeJ/avr-button-matrix.git /usr/include/avr-button-
 ## Usage
 **See [example](https://github.com/EverleeJ/avr-button-matrix/tree/main/example/example.c)** for full example project
 
+**NOTE:** This example depends on the configuration shown in image below:
+
+![example_config.png](example/example_config.png)
+
 Library depends upon the initialization of `matrix_config()` in src - delcared as a prototype in button_matrix.h
 
 `matrix_config()` should initialize and return the `config` type - also declared in button_matrix.h
@@ -47,7 +51,7 @@ To set up the initialize the data direction and ports, we will use `matrix_init(
 
 To recieve output from the button matrix, use `matrix_out()`
 
-To use `matrix_out`, a variable representing the output, should be declared using type `uint8_t` and initialized with the value of `matrix_out()`: `uint8_t out = matrix_out()`
+To use `matrix_out`, a variable representing the output, should be declared using type `uint8_t`, and initialized with the value of `matrix_out()`: `uint8_t out = matrix_out()`
 
 By default (no button press), `matrix_out()` returns 0, when a button is pressed, it should return the number of that button, relative to the location of the ROW and COL pins
 
