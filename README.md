@@ -12,7 +12,7 @@ git clone git@github.com:EverleeJ/avr-button-matrix.git /usr/include/avr-button-
 ```
 
 ## Usage
-See [example](https://github.com/EverleeJ/avr-button-matrix/tree/main/example)
+See [example](https://github.com/EverleeJ/avr-button-matrix/tree/main/example/example.c)
 
 ## License
 [MIT](https://github.com/EverleeJ/avr-button-matrix/blob/main/LICENSE)
