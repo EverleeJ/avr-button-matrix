@@ -55,7 +55,7 @@ To use `matrix_out`, a variable representing the output, should be declared usin
 
 By default (no button press), `matrix_out()` returns 0, when a button is pressed, it should return the number of that button, relative to the location of the ROW and COL pins
 
-Below is an example using values of the previously shown `matrix_config()`, that blinks the onboard Arduino Uno LED (PORTB5) when a button is pressed
+Below is an example using values of the previously shown `matrix_config()` that blinks the onboard Arduino Uno LED (PORTB5) when a button is pressed
 
 ```c
 int main(void) {
