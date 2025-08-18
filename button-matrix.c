@@ -2,7 +2,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include <stdint.h>
-#include "keypad.h"
+#include "button-matrix.h"
 
 uint8_t matrix_scan(void) {
   config conf;
