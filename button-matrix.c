@@ -78,4 +78,3 @@ void matrix_init(void) {
   *conf.COL_PORT |= conf.COL_MASK;
 }
 
-
