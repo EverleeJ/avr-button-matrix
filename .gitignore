@@ -1,5 +1,5 @@
-Makefile
 compile_commands.json
 .cache/
 main.c
 bin/
+Makefile

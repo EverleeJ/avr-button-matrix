@@ -3,14 +3,13 @@
 
 #include <stdint.h>
 
-
 // configure location of button matrix on microcontroller
 typedef struct Config {
-  uint8_t ROW_PORT;
-  uint8_t ROW_DDR;
-  uint8_t COL_PORT;
-  uint8_t COL_DDR;
-  uint8_t COL_PIN;
+  volatile uint8_t *ROW_PORT;
+  volatile uint8_t *ROW_DDR;
+  volatile uint8_t *COL_PORT;
+  volatile uint8_t *COL_DDR;
+  volatile uint8_t *COL_PIN;
 
   uint8_t ROWS;
   uint8_t COLS;
@@ -23,9 +22,9 @@ typedef struct Config {
 } config;
 
 // prototypes
-config  matrix_config(void);  // user initializes in src
-uint8_t matrix_scan(void);    // get input from user, return raw output
-uint8_t matrix_out(void);     // filter raw output, return filtered output
-void    matrix_init(void);    // set up IO ports for matrix
+config matrix_config(void);  // user initializes in src
+uint8_t matrix_scan(void);   // get input from user, return raw output
+uint8_t matrix_out(void);    // filter raw output, return filtered output
+void matrix_init(void);      // set up IO ports for matrix
 
 #endif  // BUTTON_MATRIX

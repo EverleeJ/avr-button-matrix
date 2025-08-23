@@ -1,4 +1,3 @@
-#define  F_CPU  16000000UL
 #include <avr/io.h>
 #include <util/delay.h>
 #include <stdint.h>
@@ -15,18 +14,18 @@ uint8_t matrix_scan(void) {
   uint8_t col_bit;  // bitmask for current col
   uint8_t cols;     // col input state
 
-  conf.ROW_PORT |= ~(conf.ROW_MASK);     // set all row lines to high (inactive)
+  *conf.ROW_PORT |= ~(conf.ROW_MASK);     // set all row lines to high (inactive)
   row_bit = (1 << conf.FIRST_ROW);  // start with first row bit
 
   // scan through rows
   for (row_num = 0; row_num < conf.ROWS; row_num++) {
-    conf.ROW_PORT &= ~(row_bit);  // set current row to low
+    *conf.ROW_PORT &= ~(row_bit);  // set current row to low
     _delay_us(5);            // small delay for signal to stablize
 
     col_bit = 1 << conf.FIRST_COL;    // start with first col bit
-    cols = ~conf.COL_PIN & conf.COL_MASK;  // read low column inputs (pressed = 0)
+    cols = ~(*conf.COL_PIN & conf.COL_MASK);  // read low column inputs (pressed = 0)
 
-    conf.ROW_PORT |= conf.ROW_MASK;  // set row back to high (inactive)
+    *conf.ROW_PORT |= conf.ROW_MASK;  // set row back to high (inactive)
 
     for (col_num = 0; col_num < conf.COLS; col_num++) {
       if (cols & col_bit) {                    // if col active, keypress detected
@@ -43,7 +42,7 @@ uint8_t matrix_scan(void) {
 }
 
 
-#define FILTER_COUNT  30/6
+#define FILTER_COUNT  (30/6)
 
 uint8_t matrix_out(void) {
   // static so they remain the same through multiple function calls
@@ -72,11 +71,11 @@ void matrix_init(void) {
   config conf;
   conf = matrix_config();
 
-  conf.ROW_DDR |= conf.ROW_MASK;
-  conf.ROW_PORT |= conf.ROW_MASK;
+  *conf.ROW_DDR |= conf.ROW_MASK;
+  *conf.ROW_PORT |= conf.ROW_MASK;
 
-  conf.COL_DDR &= ~conf.COL_MASK;
-  conf.COL_PORT |= conf.COL_MASK;
+  *conf.COL_DDR &= ~conf.COL_MASK;
+  *conf.COL_PORT |= conf.COL_MASK;
 }
 
 
