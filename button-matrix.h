@@ -28,3 +28,4 @@ uint8_t matrix_out(void);    // filter raw output, return filtered output
 void matrix_init(void);      // set up IO ports for matrix
 
 #endif  // BUTTON_MATRIX
+
