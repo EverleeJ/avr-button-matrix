@@ -2,6 +2,7 @@
 
 avr-button-matrix is a barebones, easy to use library written in AVR-GCC for any AVR microcontroller
 
+
 ## Installation (Linux/WSL)
 ***WARNING:*** Must have AVR-GCC installed before installing and using library
 
@@ -11,12 +12,13 @@ Use git-clone to clone repo to global include path
 git clone git@github.com:EverleeJ/avr-button-matrix.git /usr/include/avr-button-matrix
 ```
 
+
 ## Usage
 **See [example](https://github.com/EverleeJ/avr-button-matrix/tree/main/example/example.c)** for full example project
 
 **NOTE:** This example depends on the configuration shown in image below:
 
-![example_config.png](example/example_config.png)
+![example-config.png](example/example-config.png)
 
 Library depends upon the initialization of `matrix_config()` in src - delcared as a prototype in button_matrix.h
 
@@ -26,11 +28,11 @@ Library depends upon the initialization of `matrix_config()` in src - delcared a
 config matrix_config(void) {
   config conf;
 
-  conf.ROW_PORT = PORTD;
-  conf.ROW_DDR  = DDRD;
-  conf.COL_PORT = PORTB;
-  conf.COL_DDR  = DDRB;
-  conf.COL_PIN  = PINB;
+  conf.ROW_PORT = &PORTD;
+  conf.ROW_DDR  = &DDRD;
+  conf.COL_PORT = &PORTB;
+  conf.COL_DDR  = &DDRB;
+  conf.COL_PIN  = &PINB;
 
   conf.ROWS = 4;
   conf.COLS = 4;
@@ -61,15 +63,15 @@ Below is an example using values of the previously shown `matrix_config()` that 
 int main(void) {
   matrix_init();
 
-  DDRB |= (DDB5 << 1);  // LED DDR set to output
+  DDRB |= (1 << DDB5);  // LED DDR set to output
 
   for (;;) {
     uint8_t out = matrix_out();
     if (out != 0) {
-      PORTB &= ~(PORTB5 << 1);  // LED off
+      PORTB &= ~(1 << PORTB5);  // LED off
       _delay_ms(100);
     }
-    PORTB |= (PORTB5 << 1);  // LED on
+    PORTB |= (1 << PORTB5);  // LED on
   }
 
   return 0;
@@ -77,6 +79,26 @@ int main(void) {
 ```
 
 
+## Build
+Makefile:
+![Makefile](example/Makefile)
+
+Edit Makefile to include or change certain criteria that may be specific to your pproject
+
+Example:
+```make
+SRC = main button-matrix
+MCU = atmega328p
+F_CPU = 16000000UL
+PORT = /dev/ttyUSB0
+BAUD = 115200
+
+BIN_DIR = bin
+```
+
+May all be change
+
+After Makefile configuration, use `make flash` to build and flash to microcontroller
 
 ## License
 [MIT](https://github.com/EverleeJ/avr-button-matrix/blob/main/LICENSE)
