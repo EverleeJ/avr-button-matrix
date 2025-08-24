@@ -1,7 +1,28 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include <stdint.h>
-#include "button-matrix.h"
+// #include "button-matrix.h"
+
+typedef struct Config {
+  volatile uint8_t *ROW_PORT;
+  volatile uint8_t *ROW_DDR;
+  volatile uint8_t *COL_PORT;
+  volatile uint8_t *COL_DDR;
+  volatile uint8_t *COL_PIN;
+
+  uint8_t ROWS;
+  uint8_t COLS;
+
+  uint8_t FIRST_ROW;
+  uint8_t FIRST_COL;
+
+  uint8_t ROW_MASK;
+  uint8_t COL_MASK;
+} config;
+
+// prototypes
+config matrix_config(void);  // user initializes in src
+
 
 uint8_t matrix_scan(void) {
   config conf;
@@ -23,7 +44,7 @@ uint8_t matrix_scan(void) {
     _delay_us(5);            // small delay for signal to stablize
 
     col_bit = 1 << conf.FIRST_COL;    // start with first col bit
-    cols = ~(*conf.COL_PIN & conf.COL_MASK);  // read low column inputs (pressed = 0)
+    cols = ~(*conf.COL_PIN) & conf.COL_MASK;  // read low column inputs (pressed = 0)
 
     *conf.ROW_PORT |= conf.ROW_MASK;  // set row back to high (inactive)
 
@@ -42,7 +63,7 @@ uint8_t matrix_scan(void) {
 }
 
 
-#define FILTER_COUNT  (30/6)
+#define  FILTER_COUNT  (30/6)
 
 uint8_t matrix_out(void) {
   // static so they remain the same through multiple function calls
@@ -74,7 +95,7 @@ void matrix_init(void) {
   *conf.ROW_DDR |= conf.ROW_MASK;
   *conf.ROW_PORT |= conf.ROW_MASK;
 
-  *conf.COL_DDR &= ~conf.COL_MASK;
+  *conf.COL_DDR &= ~(conf.COL_MASK);
   *conf.COL_PORT |= conf.COL_MASK;
 }
 
