@@ -14,7 +14,7 @@ git clone git@github.com:EverleeJ/avr-button-matrix.git /usr/include/avr-button-
 
 
 ## Usage
-**See [example](https://github.com/EverleeJ/avr-button-matrix/tree/main/example/example.c)** for full example project
+**See [example](https://github.com/EverleeJ/avr-button-matrix/tree/main/example/)** for full example project
 
 **NOTE:** This example depends on the configuration shown in image below:
 
@@ -80,9 +80,6 @@ int main(void) {
 
 
 ## Build
-Makefile:
-![Makefile](example/Makefile)
-
 Edit Makefile to include or change certain criteria that may be specific to your pproject
 
 Example:
@@ -96,7 +93,7 @@ BAUD = 115200
 BIN_DIR = bin
 ```
 
-May all be change
+May all be up to change
 
 After Makefile configuration, use `make flash` to build and flash to microcontroller
 
