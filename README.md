@@ -86,7 +86,7 @@ Makefile:
 Edit Makefile to include or change certain criteria that may be specific to your pproject
 
 Example:
-```make
+```bash
 SRC = main button-matrix
 MCU = atmega328p
 F_CPU = 16000000UL
