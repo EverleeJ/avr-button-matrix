@@ -82,7 +82,7 @@ int main(void) {
 
 
 ## Build
-Edit Makefile to include or change certain criteria that may be specific to your pproject and/or microcontroller
+Edit Makefile to include or change certain criteria that may be specific to your project and/or microcontroller
 
 Example:
 ```bash
