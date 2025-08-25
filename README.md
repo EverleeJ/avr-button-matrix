@@ -69,7 +69,7 @@ int main(void) {
 
   for (;;) {
     uint8_t out = matrix_out();
-    if (out != 0) {
+    if (out != 0) {  // if any key pressed
       PORTB &= ~(1 << PORTB5);  // LED off
       _delay_ms(100);
     }
