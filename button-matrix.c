@@ -1,27 +1,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include <stdint.h>
-// #include "button-matrix.h"
-
-typedef struct Config {
-  volatile uint8_t *ROW_PORT;
-  volatile uint8_t *ROW_DDR;
-  volatile uint8_t *COL_PORT;
-  volatile uint8_t *COL_DDR;
-  volatile uint8_t *COL_PIN;
-
-  uint8_t ROWS;
-  uint8_t COLS;
-
-  uint8_t FIRST_ROW;
-  uint8_t FIRST_COL;
-
-  uint8_t ROW_MASK;
-  uint8_t COL_MASK;
-} config;
-
-// prototypes
-config matrix_config(void);  // user initializes in src
+#include "button-matrix.h"
 
 
 uint8_t matrix_scan(void) {
