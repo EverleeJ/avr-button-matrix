@@ -5,20 +5,20 @@
 
 // configure location of button matrix on microcontroller
 typedef struct Config {
-  volatile uint8_t *ROW_PORT;
-  volatile uint8_t *ROW_DDR;
-  volatile uint8_t *COL_PORT;
-  volatile uint8_t *COL_DDR;
-  volatile uint8_t *COL_PIN;
-
-  uint8_t ROWS;
-  uint8_t COLS;
-
-  uint8_t FIRST_ROW;
-  uint8_t FIRST_COL;
-
-  uint8_t ROW_MASK;
-  uint8_t COL_MASK;
+	volatile uint8_t *ROW_PORT;
+	volatile uint8_t *ROW_DDR;
+	volatile uint8_t *COL_PORT;
+	volatile uint8_t *COL_DDR;
+	volatile uint8_t *COL_PIN;
+	
+	uint8_t ROWS;
+	uint8_t COLS;
+	
+	uint8_t FIRST_ROW;
+	uint8_t FIRST_COL;
+	
+	uint8_t ROW_MASK;
+	uint8_t COL_MASK;
 } config;
 
 // prototypes
