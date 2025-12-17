@@ -2,17 +2,6 @@
 
 avr-button-matrix is a barebones, easy to use library written in AVR-GCC for any AVR microcontroller
 
-
-## Installation (Linux/WSL)
-***WARNING:*** Must have AVR-LIBC installed before installing and using library
-
-Use git-clone to clone repo to global include path
-
-```bash
-git clone git@github.com:EverleeJ/avr-button-matrix.git /usr/local/include/
-```
-
-
 ## Usage
 **See [example](https://github.com/EverleeJ/avr-button-matrix/tree/main/example/)** for full example project
 
@@ -63,20 +52,20 @@ Below is an example using values of the previously shown `matrix_config()` that 
 
 ```c
 int main(void) {
-  matrix_init();
+    matrix_init();
 
-  DDRB |= (1 << DDB5);  // LED DDR set to output
+    DDRB |= (1 << DDB5);  // LED DDR set to output
 
-  for (;;) {
-    uint8_t out = matrix_out();
-    if (out != 0) {  // if any key pressed
-      PORTB &= ~(1 << PORTB5);  // LED off
-      _delay_ms(100);
+    for (;;) {
+        uint8_t out = matrix_out();
+        if (out != 0) {  // if any key pressed
+            PORTB &= ~(1 << PORTB5);  // LED off
+            _delay_ms(100);
+        }
+        PORTB |= (1 << PORTB5);  // LED on
     }
-    PORTB |= (1 << PORTB5);  // LED on
-  }
 
-  return 0;
+    return 0;
 }
 ```
 
