@@ -15,26 +15,26 @@ Library depends upon the initialization of `matrix_config()` in src - delcared a
 
 ```c
 config matrix_config(void) {
-  config conf;
+    config conf;
 
-  // initialize with register addresses to actually change value of register
-  // not a copy of the variable
-  conf.ROW_PORT = &PORTD;
-  conf.ROW_DDR  = &DDRD;
-  conf.COL_PORT = &PORTB;
-  conf.COL_DDR  = &DDRB;
-  conf.COL_PIN  = &PINB;
+    // initialize with register addresses to actually change value of register
+    // not a copy of the variable
+    conf.ROW_PORT = &PORTD;
+    conf.ROW_DDR  = &DDRD;
+    conf.COL_PORT = &PORTB;
+    conf.COL_DDR  = &DDRB;
+    conf.COL_PIN  = &PINB;
 
-  conf.ROWS = 4;  // 4 rows
-  conf.COLS = 4;  // 4 cols
+    conf.ROWS = 4;  // 4 rows
+    conf.COLS = 4;  // 4 cols
 
-  conf.FIRST_ROW = 4;  // row starts at PORTD5
-  conf.FIRST_COL = 0;  // col starts at PORTB0
+    conf.FIRST_ROW = 4;  // row starts at PORTD5
+    conf.FIRST_COL = 0;  // col starts at PORTB0
 
-  conf.ROW_MASK = 0b11110000;  // last 4 bits of PORTD (rows)
-  conf.COL_MASK = 0b001111;    // first 4 bits of PORTB (cols)
+    conf.ROW_MASK = 0b11110000;  // last 4 bits of PORTD (rows)
+    conf.COL_MASK = 0b001111;    // first 4 bits of PORTB (cols)
 
-  return conf;
+    return conf;
 }
 ```
 
